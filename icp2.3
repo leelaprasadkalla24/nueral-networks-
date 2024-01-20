@@ -1,0 +1,25 @@
+
+def convert_heights_nested(heights):
+    heights_cm = []
+    for height in heights:
+        height_cm = height * 2.54
+        heights_cm.append(round(height_cm, 2))
+    return heights_cm
+
+
+def convert_heights_list_comprehension(heights):
+    return [round(height * 2.54, 2) for height in heights]
+
+
+heights = []
+num_customers = int(input("Enter the number of customers: "))
+
+for i in range(num_customers):
+    height = float(input(f"Enter height (in inches) for customer {i+1}: "))
+    heights.append(height)
+
+heights_cm_nested = convert_heights_nested(heights)
+print("Heights in Centimeters (Nested Loop):", heights_cm_nested)
+
+heights_cm_list_comp = convert_heights_list_comprehension(heights)
+print("Heights in Centimeters (List Comprehension):", heights_cm_list_comp)
