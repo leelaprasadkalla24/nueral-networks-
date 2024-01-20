@@ -1,0 +1,33 @@
+def count_word_occurrences(line):
+    word_count = {}
+    words = line.split()
+    for word in words:
+        word_count[word] = word_count.get(word, 0) + 1
+    return word_count
+
+input_file_path = "input.txt"
+output_file_path = "output.txt"
+
+with open(input_file_path, 'r') as input_file:
+    lines = input_file.readlines()
+
+output_lines = []
+
+for line in lines:
+    output_lines.append(line.strip())
+
+    word_count = count_word_occurrences(line)
+    
+
+    for word, count in word_count.items():
+        output_lines.append(f"{word}: {count}")
+
+
+for line in output_lines:
+    print(line)
+
+
+with open(output_file_path, 'w') as output_file:
+    output_file.write('\n'.join(output_lines))
+
+print("Output has been stored in output.txt.")
